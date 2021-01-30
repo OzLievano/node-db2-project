@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable('cars',tbl=>{
-        tbl.increments();
+        tbl.increments().notNullable;
         tbl.string('make',128).unique().notNullable();
         tbl.string('model',128).notNullable();
         tbl.integer('mileage').notNullable();
@@ -10,6 +10,6 @@ exports.up = function(knex) {
     })
   };
   
-  exports.down = function(knex) {
+exports.down = function(knex) {
     return knex.schema.dropTableIfExists('cars');
   };
